@@ -44,13 +44,17 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		</div>
 	</header>
 
-	<section class="hero" aria-labelledby="hero-title">
+	<section
+		class="hero"
+		aria-labelledby="hero-title"
+		style={`--hero-photo: url(${home}notary-legal-office-hero.png)`}
+	>
 		<div class="hero-bg"></div>
 		<div class="hero-overlay"></div>
 		<div class="hero-content">
 			<p class="hero-tagline">your team for pro support…</p>
 			<h1 id="hero-title" class="hero-title">
-				Επαγγελματική διοικητική &amp; τεχνική υποστήριξη για σύγχρονα συμβολαιογραφεία
+				Επαγγελματική υποστήριξη για σύγχρονα συμβολαιογραφεία &amp; δικηγορικά γραφεία
 			</h1>
 			<p class="hero-sub">Αξιόπιστες λύσεις για τον συμβολαιογραφικό και νομικό χώρο</p>
 			<a href="#contact" class="btn btn-primary">Επικοινωνήστε μαζί μας</a>
@@ -541,9 +545,16 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		position: absolute;
 		inset: 0;
 		background:
-			linear-gradient(135deg, rgba(6, 16, 24, 0.92) 0%, rgba(13, 27, 42, 0.88) 45%, rgba(27, 38, 59, 0.85) 100%),
-			url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-		background-size: cover, 60px 60px;
+			linear-gradient(
+				135deg,
+				rgba(6, 16, 24, 0.92) 0%,
+				rgba(13, 27, 42, 0.88) 45%,
+				rgba(27, 38, 59, 0.85) 100%
+			),
+			var(--hero-photo);
+		background-size: cover, cover;
+		background-position: center, center;
+		background-repeat: no-repeat, no-repeat;
 		z-index: 0;
 	}
 
