@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const home = import.meta.env.BASE_URL;
+/** Web3Forms — δημιουργία κλειδιού στο https://web3forms.com (δωρεάν, email παραλήπτη από εκεί) */
+const web3AccessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists@gmail.com";
 ---
 
 <BaseLayout title="NOTARY PRO SUPPORT O.E. | Επαγγελματική Υποστήριξη Συμβολαιογραφείων">
@@ -266,8 +269,14 @@ const home = import.meta.env.BASE_URL;
 				</div>
 				<div class="contact-card contact-form-card">
 					<h3 class="contact-card-title">Φόρμα επικοινωνίας</h3>
-					<p class="form-hint">Συμπληρώστε τα πεδία και πατήστε αποστολή — θα ανοίξει το πρόγραμμα αλληλογραφίας σας με προσυμπληρωμένο μήνυμα.</p>
-					<form class="contact-form" id="contact-form" novalidate>
+					<p class="form-hint">
+						Συμπληρώστε τα πεδία και πατήστε αποστολή.
+						{web3AccessKey
+							? " Το μήνυμα στέλνεται απευθείας στην εταιρεία."
+							: " Αν δεν έχει ρυθμιστεί η ηλεκτρονική αποστολή, θα ανοίξει το πρόγραμμα αλληλογραφίας σας."}
+					</p>
+					<p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+					<form class="contact-form" id="contact-form">
 						<label class="form-field">
 							<span>Ονοματεπώνυμο</span>
 							<input type="text" name="name" required autocomplete="name" />
@@ -280,7 +289,7 @@ const home = import.meta.env.BASE_URL;
 							<span>Μήνυμα</span>
 							<textarea name="message" rows="5" required></textarea>
 						</label>
-						<button type="submit" class="btn btn-primary btn-full">Αποστολή μέσω email</button>
+						<button type="submit" class="btn btn-primary btn-full" id="form-submit">Αποστολή</button>
 					</form>
 				</div>
 			</div>
@@ -294,7 +303,7 @@ const home = import.meta.env.BASE_URL;
 		</div>
 	</footer>
 
-	<script>
+	<script define:vars={{ web3AccessKey, mailtoFallback }}>
 		const toggle = document.getElementById("menu-toggle");
 		const mobileNav = document.getElementById("mobile-nav");
 		toggle?.addEventListener("click", () => {
@@ -315,18 +324,68 @@ const home = import.meta.env.BASE_URL;
 		});
 
 		const form = document.getElementById("contact-form");
-		form?.addEventListener("submit", (e) => {
+		const formStatus = document.getElementById("form-status");
+		const submitBtn = document.getElementById("form-submit");
+
+		form?.addEventListener("submit", async (e) => {
 			e.preventDefault();
 			if (!(form instanceof HTMLFormElement)) return;
+			formStatus && (formStatus.textContent = "");
+			if (!form.checkValidity()) {
+				form.reportValidity();
+				return;
+			}
 			const fd = new FormData(form);
 			const name = String(fd.get("name") || "").trim();
 			const email = String(fd.get("email") || "").trim();
 			const message = String(fd.get("message") || "").trim();
-			const subject = encodeURIComponent(`Επικοινωνία ιστοσελίδας — ${name}`);
-			const body = encodeURIComponent(
-				`Ονοματεπώνυμο: ${name}\nEmail: ${email}\n\nΜήνυμα:\n${message}`
-			);
-			window.location.href = `mailto:notaries.assists@gmail.com?subject=${subject}&body=${body}`;
+
+			if (!web3AccessKey) {
+				const subject = encodeURIComponent(`Επικοινωνία ιστοσελίδας — ${name}`);
+				const body = encodeURIComponent(
+					`Ονοματεπώνυμο: ${name}\nEmail: ${email}\n\nΜήνυμα:\n${message}`
+				);
+				window.location.href = `mailto:${mailtoFallback}?subject=${subject}&body=${body}`;
+				return;
+			}
+
+			if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
+			try {
+				const res = await fetch("https://api.web3forms.com/submit", {
+					method: "POST",
+					headers: { "Content-Type": "application/json", Accept: "application/json" },
+					body: JSON.stringify({
+						access_key: web3AccessKey,
+						subject: `Επικοινωνία ιστοσελίδας — ${name}`,
+						name,
+						email,
+						message,
+					}),
+				});
+				const data = await res.json();
+				if (data && typeof data === "object" && "success" in data && data.success) {
+					if (formStatus) {
+						formStatus.textContent =
+							"Το μήνυμα στάλθηκε επιτυχώς. Θα επικοινωνήσουμε σύντομα.";
+						formStatus.className = "form-status form-status--ok";
+					}
+					form.reset();
+				} else {
+					const msg =
+						data && typeof data === "object" && "message" in data && typeof data.message === "string"
+							? data.message
+							: "Αποτυχία αποστολής";
+					throw new Error(msg);
+				}
+			} catch {
+				if (formStatus) {
+					formStatus.textContent =
+						"Δεν ήταν δυνατή η αποστολή. Δοκιμάστε ξανά ή καλέστε μας τηλεφωνικά.";
+					formStatus.className = "form-status form-status--err";
+				}
+			} finally {
+				if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+			}
 		});
 	</script>
 </BaseLayout>
@@ -953,8 +1012,23 @@ const home = import.meta.env.BASE_URL;
 	.form-hint {
 		font-size: 0.88rem;
 		color: var(--color-gray);
-		margin: 0 0 1.25rem;
+		margin: 0 0 1rem;
 		line-height: 1.55;
+	}
+
+	.form-status {
+		min-height: 1.25rem;
+		margin: 0 0 1rem;
+		font-size: 0.9rem;
+		line-height: 1.45;
+	}
+
+	.form-status--ok {
+		color: #1b5e20;
+	}
+
+	.form-status--err {
+		color: #b71c1c;
 	}
 
 	.contact-form {
