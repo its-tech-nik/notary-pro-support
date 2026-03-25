@@ -1,17 +1,1022 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const home = import.meta.env.BASE_URL;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="NOTARY PRO SUPPORT O.E. | Επαγγελματική Υποστήριξη Συμβολαιογραφείων">
+	<header class="site-header">
+		<div class="header-inner">
+			<a href={home} class="logo">
+				<span class="logo-mark" aria-hidden="true">
+					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="4" y="6" width="32" height="28" rx="2" stroke="currentColor" stroke-width="1.5"></rect>
+						<path d="M12 14h16M12 20h12M12 26h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+					</svg>
+				</span>
+				<span class="logo-text">NOTARY PRO SUPPORT</span>
+			</a>
+			<nav class="nav" aria-label="Κύρια πλοήγηση">
+				<a href="#values">Αξίες</a>
+				<a href="#services">Υπηρεσίες</a>
+				<a href="#notaries">Συμβολαιογράφοι</a>
+				<a href="#lawyers">Δικηγόροι</a>
+				<a href="#about">Εταιρεία</a>
+				<a href="#contact" class="nav-cta">Επικοινωνία</a>
+			</nav>
+			<button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" id="menu-toggle">
+				<span class="sr-only">Μενού</span>
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+			</button>
+		</div>
+		<div class="mobile-nav" id="mobile-nav" hidden>
+			<a href="#values">Αξίες</a>
+			<a href="#services">Υπηρεσίες</a>
+			<a href="#notaries">Συμβολαιογράφοι</a>
+			<a href="#lawyers">Δικηγόροι</a>
+			<a href="#about">Εταιρεία</a>
+			<a href="#contact">Επικοινωνία</a>
+		</div>
+	</header>
+
+	<section class="hero" aria-labelledby="hero-title">
+		<div class="hero-bg"></div>
+		<div class="hero-overlay"></div>
+		<div class="hero-content">
+			<p class="hero-tagline">your team for pro support…</p>
+			<h1 id="hero-title" class="hero-title">
+				Επαγγελματική διοικητική &amp; τεχνική υποστήριξη για σύγχρονα συμβολαιογραφεία
+			</h1>
+			<p class="hero-sub">Αξιόπιστες λύσεις για τον συμβολαιογραφικό και νομικό χώρο</p>
+			<a href="#contact" class="btn btn-primary">Επικοινωνήστε μαζί μας</a>
+		</div>
+	</section>
+
+	<section id="values" class="section values" aria-labelledby="values-title">
+		<div class="container">
+			<h2 id="values-title" class="sr-only">Γιατί μας εμπιστεύονται</h2>
+			<div class="values-grid">
+				<article class="value-card">
+					<div class="value-icon" aria-hidden="true">
+						<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4L6 12v12c0 11 8 20 18 22 10-2 18-11 18-22V12L24 4z" stroke="currentColor" stroke-width="2"/><path d="M18 24l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+					</div>
+					<h3 class="value-heading">Εμπειρία &amp; εμπιστοσύνη</h3>
+					<p class="value-text">Έμπειρη υποστήριξη για συμβολαιογράφους και νομικούς επαγγελματίες.</p>
+				</article>
+				<article class="value-card">
+					<div class="value-icon" aria-hidden="true">
+						<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="16" cy="28" r="8" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="28" r="8" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2"/></svg>
+					</div>
+					<h3 class="value-heading">Αποτελεσματικές λύσεις</h3>
+					<p class="value-text">Οργάνωση γραφείου και διαδικασιών με σαφήνεια και ταχύτητα.</p>
+				</article>
+				<article class="value-card">
+					<div class="value-icon" aria-hidden="true">
+						<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4L6 12v12c0 11 8 20 18 22 10-2 18-11 18-22V12L24 4z" stroke="currentColor" stroke-width="2"/><rect x="18" y="20" width="12" height="10" rx="1" stroke="currentColor" stroke-width="2"/></svg>
+					</div>
+					<h3 class="value-heading">Εμπιστευτικότητα</h3>
+					<p class="value-text">Ασφαλείς και διακριτικές υπηρεσίες σε κάθε συνεργασία.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section id="services" class="section services-intro">
+		<div class="container narrow">
+			<div class="section-head">
+				<h2 class="section-title gold-lines">Οι υπηρεσίες μας</h2>
+				<p class="section-lead">Ολοκληρωμένη υποστήριξη για τη συμβολαιογραφική και νομική σας πράξη</p>
+			</div>
+			<p class="services-blurb">
+				Οι υπηρεσίες μας απευθύνονται σε <strong>συμβολαιογράφους</strong> και <strong>δικηγόρους</strong>. Επιλέξτε παρακάτω την κατηγορία που σας ενδιαφέρει για λεπτομερή περιγραφή.
+			</p>
+			<div class="audience-cards">
+				<a href="#notaries" class="audience-card">
+					<span class="audience-label">Για</span>
+					<span class="audience-title">Συμβολαιογράφους</span>
+					<span class="audience-desc">Συγγραφή πράξεων, myProperty, Κτηματολόγιο και πλήρης υποστήριξη γραφείου.</span>
+				</a>
+				<a href="#lawyers" class="audience-card">
+					<span class="audience-label">Για</span>
+					<span class="audience-title">Δικηγόρους</span>
+					<span class="audience-desc">Σύνταξη πράξεων, δηλώσεις, τεκμηρίωση και δακτυλογράφηση.</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="notaries" class="section service-block service-block--light" aria-labelledby="notaries-title">
+		<div class="container">
+			<header class="service-block-head">
+				<p class="service-audience">Συμβολαιογράφοι</p>
+				<h2 id="notaries-title" class="service-block-title">Υπηρεσίες προς συμβολαιογράφους</h2>
+				<p class="service-block-lead">
+					Επαγγελματική υποστήριξη συμβολαιογραφείων με έμφαση στη συγγραφή συμβολαιογραφικών πράξεων, τις ηλεκτρονικές δηλώσεις και τη διαχείριση ακινήτων και εταιρικών συναλλαγών.
+				</p>
+			</header>
+
+			<div class="service-subsection">
+				<h3 class="h3">Συγγραφή συμβολαιογραφικών πράξεων</h3>
+				<ul class="service-list">
+					<li>Δήλωση αποδοχής κληρονομιάς</li>
+					<li>Γονική παροχή και δωρεά</li>
+					<li>Σύσταση οριζόντιας και κάθετης ιδιοκτησίας</li>
+					<li>Τροποποίηση οριζόντιας και κάθετης ιδιοκτησίας</li>
+					<li>Συνενώσεις – κατατμήσεις ακινήτων</li>
+					<li>Διανομή</li>
+					<li>Ανταλλαγή</li>
+					<li>Σύσταση εταιρειών</li>
+					<li>Τροποποιήσεις εταιρειών (μετατροπές, συγχωνεύσεις, διασπάσεις)</li>
+					<li>Ανταλλαγή εταιρικών μεριδίων</li>
+					<li>Πώληση εταιρικών μεριδίων</li>
+					<li>Δωρεά εταιρικών μεριδίων</li>
+					<li>Δήλωση του Ν. 1221/…</li>
+					<li>Διορθώσεις συμβολαιογραφικών πράξεων</li>
+				</ul>
+			</div>
+
+			<div class="service-subsection">
+				<h3 class="h3">Δηλώσεις myProperty και μέσω αιτημάτων</h3>
+				<ul class="service-list">
+					<li>Κληρονομιάς (κινητών και ακινήτων)</li>
+					<li>Γονικών παροχών και δωρεών (κινητών και ακινήτων)</li>
+					<li>Πώλησης</li>
+					<li>Σύστασης οριζόντιας και κάθετης ιδιοκτησίας</li>
+					<li>Τροποποίησης οριζόντιας και κάθετης ιδιοκτησίας</li>
+					<li>Διανομής</li>
+					<li>Χρησικτησίας</li>
+				</ul>
+			</div>
+
+			<div class="service-subsection">
+				<h3 class="h3">Λοιπές υπηρεσίες</h3>
+				<ul class="service-list service-list--inline">
+					<li>Υπολογισμός αντικειμενικών αξιών</li>
+					<li>Περιλήψεις και καταχωρίσεις Κτηματολογίου</li>
+					<li>Σύνταξη αίτησης και περίληψης μη λειτουργούντος Κτηματολογίου</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="lawyers" class="section service-block service-block--muted" aria-labelledby="lawyers-title">
+		<div class="container">
+			<header class="service-block-head">
+				<p class="service-audience">Δικηγόροι</p>
+				<h2 id="lawyers-title" class="service-block-title">Υπηρεσίες προς δικηγόρους</h2>
+				<p class="service-block-lead">
+					Υποστήριξη νομικών γραφείων με σύνταξη πράξεων αποδοχής κληρονομιάς, δηλώσεις myProperty, τεκμηρίωση ακινήτων και δακτυλογράφηση.
+				</p>
+			</header>
+
+			<div class="service-subsection">
+				<h3 class="h3">Σύνταξη πράξεων αποδοχής κληρονομιάς</h3>
+			</div>
+
+			<div class="service-subsection">
+				<h3 class="h3">Δηλώσεις myProperty και μέσω αιτημάτων</h3>
+				<ul class="service-list">
+					<li>Κληρονομιάς (κινητών και ακινήτων)</li>
+					<li>Γονικών παροχών και δωρεών (κινητών και ακινήτων)</li>
+					<li>Πώλησης</li>
+					<li>Διανομής</li>
+					<li>Χρησικτησίας</li>
+				</ul>
+			</div>
+
+			<div class="service-subsection">
+				<h3 class="h3">Λοιπές υπηρεσίες</h3>
+				<ul class="service-list service-list--inline">
+					<li>Υπολογισμός αντικειμενικών αξιών</li>
+					<li>Περιλήψεις και καταχωρίσεις Κτηματολογίου</li>
+					<li>Σύνταξη αίτησης και περίληψης μη λειτουργούντος Κτηματολογίου</li>
+					<li>Δακτυλογράφηση κειμένων</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="about" class="section about" aria-labelledby="about-title">
+		<div class="container">
+			<div class="section-head">
+				<h2 id="about-title" class="section-title gold-lines">Η εταιρεία μας</h2>
+				<p class="section-lead">NOTARY PRO SUPPORT O.E.</p>
+			</div>
+			<div class="about-grid">
+				<div class="about-text">
+					<p>
+						Η <strong>NOTARY PRO SUPPORT O.E.</strong> ιδρύθηκε τον Νοέμβριο του 2025 και αποτελείται από καταξιωμένες και έμπειρες επαγγελματίες, με εξειδικευμένες γνώσεις στον τομέα της συμβολαιογραφικής υποστήριξης και παροχές υψηλής ποιότητας.
+					</p>
+					<p>
+						Η αποστολή μας είναι να προσφέρουμε ολοκληρωμένη και αξιόπιστη υποστήριξη σε κάθε επαγγελματική διαδικασία, με απόλυτη συνέπεια, ασφάλεια και διακριτικότητα. Η ομάδα μας συνδυάζει πολυετή εμπειρία με τεχνογνωσία, ώστε να διευκολύνει την καθημερινή σας εργασία.
+					</p>
+					<p>
+						Κάθε συνεργασία αντιμετωπίζεται με εξατομικευμένη προσέγγιση. Πιστεύουμε ότι η ποιότητα, η αξιοπιστία και η επαγγελματική ακεραιότητα είναι η βάση για μακροχρόνιες συνεργασίες — είμαστε εδώ ώστε κάθε διαδικασία να ολοκληρώνεται σωστά, έγκαιρα και με επαγγελματισμό.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section why" aria-labelledby="why-title">
+		<div class="container narrow">
+			<div class="section-head">
+				<h2 id="why-title" class="section-title section-title--on-dark gold-lines">Γιατί να μας επιλέξετε</h2>
+			</div>
+			<ul class="why-list">
+				<li>Ανώτατη επαγγελματική αξιοπιστία — ακρίβεια, συνέπεια και διακριτικότητα σε κάθε υπηρεσία.</li>
+				<li>Εξειδικευμένη ομάδα με εμπειρία και τεχνογνωσία, με λύσεις προσαρμοσμένες στις ανάγκες σας.</li>
+				<li>Ολοκληρωμένη υποστήριξη από την οργάνωση έως την εκτέλεση, ώστε εσείς να εστιάζετε στην ουσία της δουλειάς σας.</li>
+				<li>Ασφάλεια και διαφάνεια — κάθε διαδικασία με πλήρη σεβασμό στην εμπιστευτικότητα.</li>
+			</ul>
+			<p class="why-closing">
+				Στην NOTARY PRO SUPPORT η δέσμευσή μας είναι ξεκάθαρη: υποστήριξη υψηλής ποιότητας που συνδυάζει επαγγελματισμό, ασφάλεια και αποτελεσματικότητα. Είμαστε ο συνεργάτης που μπορείτε να εμπιστευτείτε σε κάθε στάδιο των διαδικασιών σας.
+			</p>
+		</div>
+	</section>
+
+	<section id="contact" class="section contact" aria-labelledby="contact-title">
+		<div class="container">
+			<div class="section-head">
+				<h2 id="contact-title" class="section-title gold-lines">Επικοινωνία</h2>
+				<p class="section-lead">Ζητήστε προσφορά ή ραντεβού — θα χαρούμε να σας ακούσουμε.</p>
+			</div>
+			<div class="contact-grid">
+				<div class="contact-card">
+					<h3 class="contact-card-title">Στοιχεία</h3>
+					<dl class="contact-dl">
+						<dt>Επωνυμία</dt>
+						<dd>NOTARY PRO SUPPORT O.E.</dd>
+						<dt>Διεύθυνση</dt>
+						<dd>
+							Γ. Κονδύλη 13<br />
+							Πολύκαστρο Παιονίας, Κιλκίς<br />
+							Τ.Κ. 61200
+						</dd>
+						<dt>Τηλέφωνα</dt>
+						<dd>
+							<a href="tel:+306978216636">697 821 6636</a><br />
+							<a href="tel:+306945696233">694 569 6233</a>
+						</dd>
+						<dt>Email</dt>
+						<dd><a href="mailto:notaries.assists@gmail.com">notaries.assists@gmail.com</a></dd>
+					</dl>
+				</div>
+				<div class="contact-card contact-form-card">
+					<h3 class="contact-card-title">Φόρμα επικοινωνίας</h3>
+					<p class="form-hint">Συμπληρώστε τα πεδία και πατήστε αποστολή — θα ανοίξει το πρόγραμμα αλληλογραφίας σας με προσυμπληρωμένο μήνυμα.</p>
+					<form class="contact-form" id="contact-form" novalidate>
+						<label class="form-field">
+							<span>Ονοματεπώνυμο</span>
+							<input type="text" name="name" required autocomplete="name" />
+						</label>
+						<label class="form-field">
+							<span>Email</span>
+							<input type="email" name="email" required autocomplete="email" />
+						</label>
+						<label class="form-field">
+							<span>Μήνυμα</span>
+							<textarea name="message" rows="5" required></textarea>
+						</label>
+						<button type="submit" class="btn btn-primary btn-full">Αποστολή μέσω email</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<p class="footer-brand">NOTARY PRO SUPPORT O.E.</p>
+			<p class="footer-copy">© {new Date().getFullYear()} · Με επιφύλαξη παντός δικαιώματος.</p>
+		</div>
+	</footer>
+
+	<script>
+		const toggle = document.getElementById("menu-toggle");
+		const mobileNav = document.getElementById("mobile-nav");
+		toggle?.addEventListener("click", () => {
+			const open = mobileNav?.hasAttribute("hidden") === false;
+			if (open) {
+				mobileNav?.setAttribute("hidden", "");
+				toggle.setAttribute("aria-expanded", "false");
+			} else {
+				mobileNav?.removeAttribute("hidden");
+				toggle.setAttribute("aria-expanded", "true");
+			}
+		});
+		mobileNav?.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", () => {
+				mobileNav.setAttribute("hidden", "");
+				toggle?.setAttribute("aria-expanded", "false");
+			});
+		});
+
+		const form = document.getElementById("contact-form");
+		form?.addEventListener("submit", (e) => {
+			e.preventDefault();
+			if (!(form instanceof HTMLFormElement)) return;
+			const fd = new FormData(form);
+			const name = String(fd.get("name") || "").trim();
+			const email = String(fd.get("email") || "").trim();
+			const message = String(fd.get("message") || "").trim();
+			const subject = encodeURIComponent(`Επικοινωνία ιστοσελίδας — ${name}`);
+			const body = encodeURIComponent(
+				`Ονοματεπώνυμο: ${name}\nEmail: ${email}\n\nΜήνυμα:\n${message}`
+			);
+			window.location.href = `mailto:notaries.assists@gmail.com?subject=${subject}&body=${body}`;
+		});
+	</script>
+</BaseLayout>
+
+<style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(13, 27, 42, 0.97);
+		backdrop-filter: blur(8px);
+		border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+	}
+
+	.header-inner {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0.75rem 1.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		color: var(--color-gold);
+		font-family: var(--font-serif);
+		font-weight: 700;
+		font-size: 0.85rem;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+	}
+
+	.logo-mark {
+		display: flex;
+		color: var(--color-gold);
+	}
+
+	.logo-text {
+		white-space: nowrap;
+	}
+
+	.nav {
+		display: none;
+		gap: 1.25rem;
+		align-items: center;
+		font-size: 0.875rem;
+		font-weight: 500;
+	}
+
+	.nav a {
+		color: rgba(250, 250, 250, 0.88);
+		text-decoration: none;
+	}
+
+	.nav a:hover {
+		color: var(--color-gold-light);
+	}
+
+	.nav-cta {
+		background: var(--color-gold);
+		color: var(--color-navy) !important;
+		padding: 0.45rem 0.9rem;
+		border-radius: var(--radius);
+		font-weight: 600;
+	}
+
+	.nav-cta:hover {
+		background: var(--color-gold-light);
+		color: var(--color-navy) !important;
+	}
+
+	.menu-toggle {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		cursor: pointer;
+		color: var(--color-gold);
+	}
+
+	.menu-bar {
+		display: block;
+		height: 2px;
+		width: 22px;
+		background: currentColor;
+		border-radius: 1px;
+	}
+
+	.mobile-nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1rem 1.25rem 1.25rem;
+		background: var(--color-navy-mid);
+		border-top: 1px solid rgba(201, 168, 76, 0.15);
+	}
+
+	.mobile-nav a {
+		color: rgba(250, 250, 250, 0.92);
+		padding: 0.5rem 0;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.mobile-nav a:hover {
+		color: var(--color-gold-light);
+	}
+
+	@media (min-width: 900px) {
+		.nav {
+			display: flex;
+		}
+		.menu-toggle {
+			display: none;
+		}
+		.mobile-nav {
+			display: none !important;
+		}
+	}
+
+	.hero {
+		position: relative;
+		min-height: min(88vh, 720px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 4rem 1.5rem 5rem;
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(135deg, rgba(6, 16, 24, 0.92) 0%, rgba(13, 27, 42, 0.88) 45%, rgba(27, 38, 59, 0.85) 100%),
+			url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+		background-size: cover, 60px 60px;
+		z-index: 0;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 55%);
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		max-width: 46rem;
+	}
+
+	.hero-tagline {
+		font-family: var(--font-serif);
+		font-style: italic;
+		font-size: 0.95rem;
+		color: var(--color-gold-light);
+		margin: 0 0 1rem;
+		letter-spacing: 0.02em;
+	}
+
+	.hero-title {
+		font-family: var(--font-serif);
+		font-weight: 700;
+		font-size: clamp(1.5rem, 4.5vw, 2.35rem);
+		line-height: 1.25;
+		color: #fff;
+		margin: 0 0 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.hero-sub {
+		font-size: 1.05rem;
+		color: rgba(255, 255, 255, 0.88);
+		margin: 0 0 2rem;
+		font-weight: 500;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.85rem 1.75rem;
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: 0.95rem;
+		border-radius: var(--radius);
+		border: none;
+		cursor: pointer;
+		text-decoration: none;
+		transition: background 0.2s, transform 0.15s;
+	}
+
+	.btn-primary {
+		background: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
+		color: var(--color-navy);
+		box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+	}
+
+	.btn-primary:hover {
+		background: linear-gradient(180deg, #edd695 0%, var(--color-gold-light) 100%);
+		transform: translateY(-1px);
+		color: var(--color-navy);
+	}
+
+	.btn-full {
+		width: 100%;
+	}
+
+	.container {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1.25rem;
+	}
+
+	.container.narrow {
+		max-width: 720px;
+	}
+
+	.section {
+		padding: 4rem 0;
+	}
+
+	.section-head {
+		text-align: center;
+		margin-bottom: 2.5rem;
+	}
+
+	.section-title {
+		font-family: var(--font-serif);
+		font-size: clamp(1.65rem, 3vw, 2rem);
+		font-weight: 700;
+		color: var(--color-gold-dark);
+		margin: 0 0 0.75rem;
+	}
+
+	.section-title--on-dark {
+		color: #fff;
+	}
+
+	.gold-lines {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.gold-lines::before,
+	.gold-lines::after {
+		content: "";
+		height: 1px;
+		width: min(120px, 18vw);
+		background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+		opacity: 0.9;
+	}
+
+	.section-lead {
+		margin: 0;
+		color: var(--color-gray);
+		font-size: 1rem;
+	}
+
+	.values {
+		background: #fff;
+		padding-top: 3.5rem;
+		padding-bottom: 3.5rem;
+	}
+
+	.values-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	@media (min-width: 700px) {
+		.values-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	.value-card {
+		text-align: center;
+		padding: 1.5rem 1rem;
+	}
+
+	.value-icon {
+		color: var(--color-navy);
+		margin: 0 auto 1rem;
+		display: flex;
+		justify-content: center;
+	}
+
+	.value-icon svg {
+		filter: drop-shadow(0 2px 8px rgba(201, 168, 76, 0.25));
+	}
+
+	.value-heading {
+		font-family: var(--font-serif);
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: var(--color-navy);
+		margin: 0 0 0.5rem;
+	}
+
+	.value-text {
+		margin: 0;
+		color: var(--color-gray);
+		font-size: 0.95rem;
+	}
+
+	.services-intro {
+		background: #fff;
+		padding-top: 0;
+	}
+
+	.services-blurb {
+		text-align: center;
+		color: var(--color-navy);
+		line-height: 1.7;
+		margin: 0 0 2rem;
+	}
+
+	.audience-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+	}
+
+	@media (min-width: 640px) {
+		.audience-cards {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.audience-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1.75rem;
+		background: var(--color-white);
+		border: 1px solid var(--color-gray-light);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow-card);
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.2s, box-shadow 0.2s;
+	}
+
+	.audience-card:hover {
+		border-color: rgba(201, 168, 76, 0.45);
+		box-shadow: 0 12px 40px rgba(13, 27, 42, 0.1);
+	}
+
+	.audience-label {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-gold-dark);
+		font-weight: 600;
+	}
+
+	.audience-title {
+		font-family: var(--font-serif);
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: var(--color-navy);
+		margin: 0.35rem 0 0.75rem;
+	}
+
+	.audience-desc {
+		font-size: 0.95rem;
+		color: var(--color-gray);
+		line-height: 1.55;
+	}
+
+	.service-block {
+		padding: 4rem 0;
+	}
+
+	.service-block--light {
+		background: #fff;
+	}
+
+	.service-block--muted {
+		background: linear-gradient(180deg, #f3f5f7 0%, #fff 100%);
+	}
+
+	.service-block-head {
+		text-align: center;
+		max-width: 42rem;
+		margin: 0 auto 2.5rem;
+	}
+
+	.service-audience {
+		display: inline-block;
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: var(--color-gold-dark);
+		margin: 0 0 0.5rem;
+	}
+
+	.service-block-title {
+		font-family: var(--font-serif);
+		font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+		font-weight: 700;
+		color: var(--color-navy);
+		margin: 0 0 1rem;
+	}
+
+	.service-block-lead {
+		margin: 0;
+		color: var(--color-gray);
+		line-height: 1.7;
+	}
+
+	.service-subsection {
+		margin-bottom: 2rem;
+	}
+
+	.service-subsection:last-child {
+		margin-bottom: 0;
+	}
+
+	.h3 {
+		font-family: var(--font-serif);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--color-navy-mid);
+		margin: 0 0 0.85rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 2px solid rgba(201, 168, 76, 0.35);
+	}
+
+	.service-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.service-list li {
+		position: relative;
+		padding-left: 1.35rem;
+		color: var(--color-navy);
+		line-height: 1.55;
+		font-size: 0.95rem;
+	}
+
+	.service-list li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.55em;
+		width: 6px;
+		height: 6px;
+		background: var(--color-gold);
+		border-radius: 1px;
+		transform: rotate(45deg);
+	}
+
+	.service-list--inline {
+		grid-template-columns: 1fr;
+	}
+
+	@media (min-width: 600px) {
+		.service-list--inline {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.about {
+		background: #fff;
+	}
+
+	.about-text p {
+		margin: 0 0 1.15rem;
+		color: var(--color-navy);
+		line-height: 1.75;
+	}
+
+	.about-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.why {
+		background: linear-gradient(180deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+		color: #fff;
+		padding: 4.5rem 0;
+	}
+
+	.why .gold-lines::before,
+	.why .gold-lines::after {
+		background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+	}
+
+	.why-list {
+		margin: 0 0 2rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.why-list li {
+		position: relative;
+		padding-left: 2rem;
+		margin-bottom: 1rem;
+		font-family: var(--font-serif);
+		font-size: 1.05rem;
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.95);
+	}
+
+	.why-list li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: var(--color-gold);
+		font-weight: 700;
+		font-family: var(--font-sans);
+	}
+
+	.why-closing {
+		margin: 0;
+		font-size: 0.98rem;
+		line-height: 1.75;
+		color: rgba(255, 255, 255, 0.82);
+		text-align: center;
+	}
+
+	.contact {
+		background: #fff;
+		padding-bottom: 5rem;
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		align-items: start;
+	}
+
+	@media (min-width: 800px) {
+		.contact-grid {
+			grid-template-columns: 1fr 1.1fr;
+		}
+	}
+
+	.contact-card {
+		background: var(--color-white);
+		border: 1px solid var(--color-gray-light);
+		border-radius: var(--radius);
+		padding: 1.75rem;
+		box-shadow: var(--shadow-card);
+	}
+
+	.contact-card-title {
+		font-family: var(--font-serif);
+		font-size: 1.2rem;
+		margin: 0 0 1.25rem;
+		color: var(--color-navy);
+	}
+
+	.contact-dl {
+		margin: 0;
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.contact-dl dt {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-gray);
+		margin-top: 0.85rem;
+	}
+
+	.contact-dl dt:first-child {
+		margin-top: 0;
+	}
+
+	.contact-dl dd {
+		margin: 0;
+		font-size: 0.98rem;
+		line-height: 1.55;
+		color: var(--color-navy);
+	}
+
+	.contact-dl a {
+		color: var(--color-navy);
+		font-weight: 600;
+	}
+
+	.contact-dl a:hover {
+		color: var(--color-gold-dark);
+	}
+
+	.form-hint {
+		font-size: 0.88rem;
+		color: var(--color-gray);
+		margin: 0 0 1.25rem;
+		line-height: 1.55;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--color-navy);
+	}
+
+	.form-field input,
+	.form-field textarea {
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		padding: 0.65rem 0.85rem;
+		border: 1px solid var(--color-gray-light);
+		border-radius: var(--radius);
+		background: #fff;
+		color: var(--color-navy);
+	}
+
+	.form-field textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+
+	.form-field input:focus,
+	.form-field textarea:focus {
+		outline: none;
+		border-color: var(--color-gold);
+		box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+	}
+
+	.site-footer {
+		background: var(--color-navy-deep);
+		color: rgba(255, 255, 255, 0.75);
+		padding: 2rem 1.25rem;
+		text-align: center;
+		font-size: 0.875rem;
+	}
+
+	.footer-inner {
+		max-width: var(--max-width);
+		margin: 0 auto;
+	}
+
+	.footer-brand {
+		font-family: var(--font-serif);
+		font-weight: 600;
+		color: var(--color-gold);
+		margin: 0 0 0.5rem;
+		letter-spacing: 0.04em;
+	}
+
+	.footer-copy {
+		margin: 0;
+	}
+</style>
