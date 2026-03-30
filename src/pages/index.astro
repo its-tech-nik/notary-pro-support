@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PrivacyConsent from "../components/PrivacyConsent.astro";
 
 const home = import.meta.env.BASE_URL;
 /** Web3Forms — δημιουργία κλειδιού στο https://web3forms.com (δωρεάν, email παραλήπτη από εκεί) */
@@ -305,9 +306,14 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 	<footer class="site-footer">
 		<div class="container footer-inner">
 			<p class="footer-brand">NOTARY PRO SUPPORT O.E.</p>
+			<p class="footer-legal">
+				<a href="#privacy-policy" data-open-privacy class="footer-legal-link">Πολιτική απορρήτου &amp; προσωπικά δεδομένα</a>
+			</p>
 			<p class="footer-copy">© {new Date().getFullYear()} · Με επιφύλαξη παντός δικαιώματος.</p>
 		</div>
 	</footer>
+
+	<PrivacyConsent />
 
 	<script define:vars={{ web3AccessKey, mailtoFallback }}>
 		const toggle = document.getElementById("menu-toggle");
@@ -1105,5 +1111,20 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 
 	.footer-copy {
 		margin: 0;
+	}
+
+	.footer-legal {
+		margin: 0 0 0.5rem;
+		font-size: 0.875rem;
+	}
+
+	.footer-legal-link {
+		color: rgba(255, 255, 255, 0.85);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.footer-legal-link:hover {
+		color: var(--color-gold-light);
 	}
 </style>

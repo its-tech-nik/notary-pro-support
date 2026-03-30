@@ -1,0 +1,545 @@
+---
+/**
+ * Πολιτική απορρήτου — κάτω panel (μη αποκλειστικό) + modal με πλήρες κείμενο.
+ * Τελ. ενημέρωση κειμένου: 28-3-2026
+ */
+---
+
+<div id="privacy-consent-root" class="privacy-root" data-consent-pending="true">
+	<!-- Μη αποκλειστικό panel στο κάτω μέρος -->
+	<div
+		id="privacy-bar"
+		class="privacy-bar"
+		role="region"
+		aria-label="Ειδοποίηση πολιτικής απορρήτου"
+		hidden
+	>
+		<div class="privacy-bar__inner">
+			<div class="privacy-bar__text">
+				<p class="privacy-bar__title">Πολιτική απορρήτου &amp; προστασίας προσωπικών δεδομένων</p>
+				<p class="privacy-bar__desc">
+					Για τη χρήση της ιστοσελίδας χρειάζεται η ενημέρωσή σας και η συναίνεσή σας σύμφωνα με την παρακάτω πολιτική.
+				</p>
+			</div>
+			<div class="privacy-bar__actions">
+				<button type="button" class="privacy-btn privacy-btn--ghost" id="privacy-btn-more">
+					Περισσότερα
+				</button>
+				<button type="button" class="privacy-btn privacy-btn--primary" id="privacy-btn-accept">Αποδοχή</button>
+				<button type="button" class="privacy-btn privacy-btn--outline" id="privacy-btn-decline">Απόρριψη</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: πλήρες κείμενο (μόνο όταν «Περισσότερα» ή σύνδεσμος footer) -->
+	<div
+		id="privacy-modal"
+		class="privacy-modal"
+		aria-hidden="true"
+		data-modal-open="false"
+	>
+		<div class="privacy-modal__backdrop" data-close-modal tabindex="-1" aria-hidden="true"></div>
+		<div
+			class="privacy-modal__dialog"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="privacy-modal-title"
+			tabindex="-1"
+			id="privacy-policy"
+		>
+			<div class="privacy-modal__header">
+				<h2 id="privacy-modal-title" class="privacy-modal__title">
+					Πολιτική απορρήτου &amp; προστασίας προσωπικών δεδομένων
+				</h2>
+				<button type="button" class="privacy-modal__close" data-close-modal aria-label="Κλείσιμο">×</button>
+			</div>
+			<div class="privacy-modal__body" tabindex="0">
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">1. Υπεύθυνος επεξεργασίας</h3>
+					<p>
+						Η εταιρεία μας <strong>NOTARY PRO SUPPORT O.E.</strong>, με έδρα την Παιονία, Πολύκαστρο Κιλκίς, Τ.Κ. 61200, είναι ο
+						υπεύθυνος επεξεργασίας των προσωπικών δεδομένων που συλλέγονται μέσω της παρούσας ιστοσελίδας και στο πλαίσιο
+						των παρεχόμενων υπηρεσιών μας.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">2. Ποια δεδομένα συλλέγουμε</h3>
+					<p>Συλλέγουμε τα ακόλουθα προσωπικά δεδομένα:</p>
+					<ul>
+						<li>Στοιχεία ταυτοποίησης (ονοματεπώνυμο, πατρώνυμο, ημερομηνία γέννησης)</li>
+						<li>Στοιχεία επικοινωνίας (διεύθυνση, τηλέφωνο, email)</li>
+						<li>Φορολογικά στοιχεία (ΑΦΜ, ΔΟΥ, ΑΜΚΑ)</li>
+						<li>Αντίγραφα εγγράφων ταυτότητας και λοιπά δικαιολογητικά απαραίτητα για τη διεκπεραίωση των υποθέσεών σας</li>
+						<li>Δεδομένα που υποβάλλετε μέσω της φόρμας επικοινωνίας της ιστοσελίδας</li>
+					</ul>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">3. Σκοπός και νομική βάση επεξεργασίας</h3>
+					<p>Τα δεδομένα σας επεξεργαζόμαστε για τους εξής σκοπούς:</p>
+					<ul>
+						<li>
+							<strong>Παροχή υπηρεσιών διεκπεραίωσης:</strong> Η επεξεργασία είναι απαραίτητη για την εκτέλεση των υποθέσεών
+							σας (άρθρο 6 παρ. 1β ΓΚΠΔ).
+						</li>
+						<li>
+							<strong>Έννομη υποχρέωση:</strong> Η διαβίβαση δεδομένων σε δημόσιες αρχές και υπηρεσίες πραγματοποιείται
+							αποκλειστικά στο πλαίσιο των νομίμων υποχρεώσεών μας (άρθρο 6 παρ. 1γ ΓΚΠΔ) και εφόσον μας ζητηθεί από εσάς.
+						</li>
+						<li>
+							<strong>Επικοινωνία:</strong> Απάντηση σε ερωτήματα μέσω της φόρμας επικοινωνίας, βάσει του έννομου συμφέροντός
+							μας (άρθρο 6 παρ. 1στ ΓΚΠΔ).
+						</li>
+						<li>
+							<strong>Cookies &amp; στατιστική ανάλυση:</strong> Βελτίωση της λειτουργίας της ιστοσελίδας, βάσει της
+							συγκατάθεσής σας (άρθρο 6 παρ. 1α ΓΚΠΔ).
+						</li>
+					</ul>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">4. Αποδέκτες δεδομένων</h3>
+					<p>
+						Τα προσωπικά σας δεδομένα διαβιβάζονται, όπου απαιτείται και εφόσον μας το ζητήσετε ή είμαστε υποχρεωμένοι από το
+						νόμο, σε: δημόσιες υπηρεσίες και αρχές (ΚΕΠ, ΑΑΔΕ, ΕΦΚΑ, δήμους, υπουργεία κ.λπ.), δικαστικές και εισαγγελικές
+						αρχές, ασφαλιστικούς φορείς, τράπεζες και χρηματοπιστωτικά ιδρύματα, συνεργαζόμενους επαγγελματίες (δικηγόρους,
+						λογιστές, πολιτικούς μηχανικούς, συμβολαιογράφους κ.λπ.) αποκλειστικά στο πλαίσιο της συγκεκριμένης υπόθεσής σας.
+					</p>
+					<p>
+						Δεν διαβιβάζουμε δεδομένα σε τρίτες χώρες εκτός ΕΕ/ΕΟΧ και δεν τα πωλούμε ή εκχωρούμε σε τρίτους για εμπορικούς
+						σκοπούς.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">5. Χρόνος διατήρησης δεδομένων</h3>
+					<p>
+						Τα δεδομένα σας διατηρούνται για όσο χρόνο είναι απαραίτητο για την ολοκλήρωση της υπόθεσής σας και για πέντε (5)
+						έτη μετά την περαίωσή της, σύμφωνα με τις φορολογικές και λογιστικές υποχρεώσεις μας. Μετά την παρέλευση του
+						ανωτέρω χρόνου τα δεδομένα διαγράφονται με ασφαλή τρόπο.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">6. Τα δικαιώματά σας</h3>
+					<p>
+						Σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (ΓΚΠΔ / GDPR 2016/679) έχετε τα εξής δικαιώματα: πρόσβασης,
+						διόρθωσης, διαγραφής, περιορισμού επεξεργασίας, εναντίωσης, φορητότητας.
+					</p>
+					<p>
+						Για την άσκηση των δικαιωμάτων σας μπορείτε να απευθυνθείτε στο email
+						<a href="mailto:notaries.assists@gmail.com">notaries.assists@gmail.com</a> ή εγγράφως στη διεύθυνση του γραφείου
+						μας. Απαντούμε εντός τριάντα (30) ημερών από την παραλαβή του αιτήματός σας.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">7. Ασφάλεια δεδομένων</h3>
+					<p>
+						Λαμβάνουμε κατάλληλα τεχνικά και οργανωτικά μέτρα για την προστασία των προσωπικών σας δεδομένων από μη
+						εξουσιοδοτημένη πρόσβαση, απώλεια ή καταστροφή. Όλο το προσωπικό μας δεσμεύεται από υποχρέωση εμπιστευτικότητας.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">8. Δικαίωμα καταγγελίας</h3>
+					<p>Έχετε το δικαίωμα να υποβάλετε καταγγελία στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (ΑΠΔΠΧ).</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">9. Cookies</h3>
+					<p>
+						Η ιστοσελίδα μας χρησιμοποιεί cookies για τη βελτίωση της εμπειρίας πλοήγησης. Μπορείτε ανά πάσα στιγμή να
+						διαχειριστείτε ή να αποσύρετε τη συγκατάθεσή σας μέσω των ρυθμίσεων του προγράμματος περιήγησής σας.
+					</p>
+				</section>
+				<section class="privacy-section">
+					<h3 class="privacy-section__h">10. Τροποποίηση πολιτικής</h3>
+					<p>
+						Διατηρούμε το δικαίωμα τροποποίησης της παρούσας πολιτικής απορρήτου. Κάθε αλλαγή θα αναρτάται στην παρούσα σελίδα
+						με αναφορά της ημερομηνίας τελευταίας ενημέρωσης.
+					</p>
+					<p class="privacy-updated"><strong>Τελευταία ενημέρωση:</strong> 28-3-2026</p>
+				</section>
+			</div>
+			<div class="privacy-modal__footer">
+				<button type="button" class="privacy-btn privacy-btn--ghost" data-close-modal>Κλείσιμο</button>
+				<button type="button" class="privacy-btn privacy-btn--primary" id="privacy-modal-accept">Αποδοχή</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style is:global>
+	.privacy-root {
+		/* container only */
+	}
+
+	/* —— Κάτω panel (δεν μπλοκάρει την κύρια σελίδα) —— */
+	.privacy-bar {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 900;
+		padding: 0.75rem 1rem max(0.75rem, env(safe-area-inset-bottom));
+		background: linear-gradient(180deg, rgba(13, 27, 42, 0.97) 0%, #0d1b2a 100%);
+		border-top: 1px solid rgba(201, 168, 76, 0.35);
+		box-shadow: 0 -8px 32px rgba(6, 16, 24, 0.35);
+	}
+
+	.privacy-bar__inner {
+		max-width: var(--max-width, 1120px);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+		align-items: stretch;
+	}
+
+	@media (min-width: 768px) {
+		.privacy-bar__inner {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1.25rem;
+		}
+	}
+
+	.privacy-bar__text {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.privacy-bar__title {
+		font-family: var(--font-serif, "Noto Serif", serif);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--color-gold-light, #e4c77a);
+		margin: 0 0 0.35rem;
+		line-height: 1.35;
+	}
+
+	.privacy-bar__desc {
+		margin: 0;
+		font-size: 0.82rem;
+		line-height: 1.5;
+		color: rgba(250, 250, 250, 0.88);
+	}
+
+	.privacy-bar__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		flex-shrink: 0;
+		justify-content: flex-end;
+	}
+
+	.privacy-btn {
+		font-family: var(--font-sans, "Noto Sans", sans-serif);
+		font-size: 0.85rem;
+		font-weight: 600;
+		padding: 0.55rem 1rem;
+		border-radius: 6px;
+		border: none;
+		cursor: pointer;
+		transition:
+			background 0.2s,
+			color 0.2s,
+			border-color 0.2s;
+	}
+
+	.privacy-btn--primary {
+		background: linear-gradient(180deg, var(--color-gold-light, #e4c77a) 0%, var(--color-gold, #c9a84c) 100%);
+		color: var(--color-navy, #0d1b2a);
+	}
+
+	.privacy-btn--primary:hover {
+		filter: brightness(1.05);
+	}
+
+	.privacy-btn--ghost {
+		background: transparent;
+		color: rgba(250, 250, 250, 0.92);
+		border: 1px solid rgba(201, 168, 76, 0.45);
+	}
+
+	.privacy-btn--ghost:hover {
+		background: rgba(201, 168, 76, 0.12);
+	}
+
+	.privacy-btn--outline {
+		background: transparent;
+		color: rgba(250, 250, 250, 0.75);
+		border: 1px solid rgba(250, 250, 250, 0.25);
+	}
+
+	.privacy-btn--outline:hover {
+		color: #fff;
+		border-color: rgba(250, 250, 250, 0.45);
+	}
+
+	/* —— Modal πλήρους κειμένου —— */
+	.privacy-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		pointer-events: none;
+		visibility: hidden;
+	}
+
+	.privacy-modal[data-modal-open="true"] {
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	.privacy-modal__backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(6, 16, 24, 0.72);
+		backdrop-filter: blur(4px);
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+
+	.privacy-modal[data-modal-open="true"] .privacy-modal__backdrop {
+		opacity: 1;
+	}
+
+	.privacy-modal__dialog {
+		position: relative;
+		width: min(100%, 42rem);
+		max-height: min(88vh, 680px);
+		display: flex;
+		flex-direction: column;
+		background: #fafafa;
+		border: 1px solid rgba(201, 168, 76, 0.35);
+		border-radius: 8px;
+		box-shadow: 0 16px 48px rgba(13, 27, 42, 0.25);
+		transform: scale(0.96);
+		opacity: 0;
+		transition:
+			transform 0.25s ease,
+			opacity 0.2s ease;
+	}
+
+	.privacy-modal[data-modal-open="true"] .privacy-modal__dialog {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	.privacy-modal__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding: 1rem 1rem 0.5rem;
+		border-bottom: 1px solid var(--color-gray-light, #e8eaed);
+		flex-shrink: 0;
+	}
+
+	.privacy-modal__title {
+		font-family: var(--font-serif, "Noto Serif", serif);
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: var(--color-navy, #0d1b2a);
+		margin: 0;
+		line-height: 1.3;
+		flex: 1;
+	}
+
+	.privacy-modal__close {
+		flex-shrink: 0;
+		width: 2.25rem;
+		height: 2.25rem;
+		border: none;
+		background: transparent;
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--color-gray, #5c6570);
+		cursor: pointer;
+		border-radius: 4px;
+	}
+
+	.privacy-modal__close:hover {
+		background: rgba(13, 27, 42, 0.06);
+		color: var(--color-navy, #0d1b2a);
+	}
+
+	.privacy-modal__body {
+		flex: 1;
+		overflow-y: auto;
+		padding: 0.75rem 1rem 1rem;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.privacy-section {
+		margin-bottom: 1rem;
+	}
+
+	.privacy-section__h {
+		font-family: var(--font-serif, "Noto Serif", serif);
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--color-navy-mid, #1b263b);
+		margin: 0 0 0.4rem;
+	}
+
+	.privacy-section p,
+	.privacy-section li {
+		font-size: 0.82rem;
+		line-height: 1.55;
+		color: var(--color-navy, #0d1b2a);
+		margin: 0 0 0.45rem;
+	}
+
+	.privacy-section ul {
+		margin: 0 0 0.45rem;
+		padding-left: 1.1rem;
+	}
+
+	.privacy-section a {
+		color: var(--color-gold-dark, #9a7b32);
+		font-weight: 600;
+	}
+
+	.privacy-updated {
+		margin-top: 0.5rem !important;
+		font-size: 0.78rem !important;
+		color: var(--color-gray, #5c6570) !important;
+	}
+
+	.privacy-modal__footer {
+		flex-shrink: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: flex-end;
+		padding: 0.75rem 1rem 1rem;
+		border-top: 1px solid var(--color-gray-light, #e8eaed);
+		background: #fafafa;
+	}
+
+	/* «Κλείσιμο»: το ghost style είναι για σκούρο panel — εδώ χρειάζεται χρυσό/σκούρο κείμενο σε ανοιχτό φόντο */
+	.privacy-modal__footer .privacy-btn--ghost {
+		color: var(--color-gold-dark, #9a7b32);
+		border-color: rgba(201, 168, 76, 0.65);
+		background: rgba(201, 168, 76, 0.08);
+	}
+
+	.privacy-modal__footer .privacy-btn--ghost:hover {
+		color: var(--color-navy, #0d1b2a);
+		background: rgba(201, 168, 76, 0.18);
+		border-color: rgba(201, 168, 76, 0.85);
+	}
+
+	.privacy-root[data-consent-pending="false"] #privacy-modal-accept {
+		display: none;
+	}
+
+	body.privacy-modal-open {
+		overflow: hidden;
+	}
+</style>
+
+<script>
+	const STORAGE_KEY = "nps-privacy-consent-v1";
+	const DECLINE_URL = "https://www.google.com";
+
+	const root = document.getElementById("privacy-consent-root");
+	const bar = document.getElementById("privacy-bar");
+	const modal = document.getElementById("privacy-modal");
+	const modalDialog = document.getElementById("privacy-policy");
+	const btnMore = document.getElementById("privacy-btn-more");
+	const btnAccept = document.getElementById("privacy-btn-accept");
+	const btnDecline = document.getElementById("privacy-btn-decline");
+	const modalAccept = document.getElementById("privacy-modal-accept");
+
+	function isAccepted() {
+		try {
+			return localStorage.getItem(STORAGE_KEY) === "accepted";
+		} catch {
+			return false;
+		}
+	}
+
+	function setAccepted() {
+		try {
+			localStorage.setItem(STORAGE_KEY, "accepted");
+		} catch {
+			/* ignore */
+		}
+		if (root) root.setAttribute("data-consent-pending", "false");
+		bar?.setAttribute("hidden", "");
+	}
+
+	function showBar() {
+		bar?.removeAttribute("hidden");
+	}
+
+	function hideBar() {
+		bar?.setAttribute("hidden", "");
+	}
+
+	function openModal() {
+		if (!modal) return;
+		modal.setAttribute("data-modal-open", "true");
+		modal.setAttribute("aria-hidden", "false");
+		document.body.classList.add("privacy-modal-open");
+		modalDialog?.focus();
+	}
+
+	function closeModal() {
+		if (!modal) return;
+		modal.setAttribute("data-modal-open", "false");
+		modal.setAttribute("aria-hidden", "true");
+		document.body.classList.remove("privacy-modal-open");
+	}
+
+	function acceptAll() {
+		setAccepted();
+		closeModal();
+	}
+
+	function init() {
+		if (isAccepted()) {
+			if (root) root.setAttribute("data-consent-pending", "false");
+			hideBar();
+			return;
+		}
+		if (root) root.setAttribute("data-consent-pending", "true");
+		showBar();
+	}
+
+	btnMore?.addEventListener("click", () => openModal());
+	btnAccept?.addEventListener("click", () => acceptAll());
+	modalAccept?.addEventListener("click", () => acceptAll());
+	btnDecline?.addEventListener("click", () => {
+		window.location.href = DECLINE_URL;
+	});
+
+	modal?.querySelectorAll("[data-close-modal]").forEach((el) => {
+		el.addEventListener("click", () => closeModal());
+	});
+
+	modal?.addEventListener("click", (e) => {
+		if (e.target === modal.querySelector(".privacy-modal__backdrop")) closeModal();
+	});
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && modal?.getAttribute("data-modal-open") === "true") {
+			closeModal();
+		}
+	});
+
+	function bindFooterLinks() {
+		document.querySelectorAll("[data-open-privacy]").forEach((el) => {
+			el.addEventListener("click", (e) => {
+				e.preventDefault();
+				openModal();
+			});
+		});
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		init();
+		bindFooterLinks();
+	});
+</script>
