@@ -35,7 +35,7 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 				<span class="menu-bar"></span>
 			</button>
 		</div>
-		<div class="mobile-nav" id="mobile-nav" hidden>
+		<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
 			<a href="#values">Αξίες</a>
 			<a href="#services">Υπηρεσίες</a>
 			<a href="#notaries">Συμβολαιογράφοι</a>
@@ -44,6 +44,13 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 			<a href="#contact">Επικοινωνία</a>
 		</div>
 	</header>
+
+	<div
+		class="mobile-nav-backdrop"
+		id="mobile-nav-backdrop"
+		aria-hidden="true"
+		tabindex="-1"
+	></div>
 
 	<section
 		class="hero"
@@ -318,21 +325,79 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 	<script define:vars={{ web3AccessKey, mailtoFallback }}>
 		const toggle = document.getElementById("menu-toggle");
 		const mobileNav = document.getElementById("mobile-nav");
+		const mobileNavBackdrop = document.getElementById("mobile-nav-backdrop");
+		function closeMobileNav() {
+			mobileNav?.classList.remove("mobile-nav--open");
+			mobileNav?.setAttribute("aria-hidden", "true");
+			toggle?.setAttribute("aria-expanded", "false");
+			mobileNavBackdrop?.classList.remove("mobile-nav-backdrop--open");
+			mobileNavBackdrop?.setAttribute("aria-hidden", "true");
+			document.body.style.overflow = "";
+		}
+		function openMobileNav() {
+			mobileNav?.classList.add("mobile-nav--open");
+			mobileNav?.setAttribute("aria-hidden", "false");
+			toggle?.setAttribute("aria-expanded", "true");
+			mobileNavBackdrop?.classList.add("mobile-nav-backdrop--open");
+			mobileNavBackdrop?.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+		}
 		toggle?.addEventListener("click", () => {
-			const open = mobileNav?.hasAttribute("hidden") === false;
-			if (open) {
-				mobileNav?.setAttribute("hidden", "");
-				toggle.setAttribute("aria-expanded", "false");
-			} else {
-				mobileNav?.removeAttribute("hidden");
-				toggle.setAttribute("aria-expanded", "true");
-			}
+			if (mobileNav?.classList.contains("mobile-nav--open")) closeMobileNav();
+			else openMobileNav();
 		});
-		mobileNav?.querySelectorAll("a").forEach((a) => {
-			a.addEventListener("click", () => {
-				mobileNav.setAttribute("hidden", "");
-				toggle?.setAttribute("aria-expanded", "false");
+		mobileNavBackdrop?.addEventListener("click", () => closeMobileNav());
+		window.matchMedia("(min-width: 900px)").addEventListener("change", (e) => {
+			if (e.matches) closeMobileNav();
+		});
+		/** Section tops include large padding; align the visible heading block under the closed toolbar */
+		function resolveScrollAnchor(section) {
+			if (!(section instanceof HTMLElement)) return section;
+			const inner =
+				section.querySelector(".service-block-head") ||
+				section.querySelector(".section-head") ||
+				section.querySelector(".values-grid");
+			return inner ?? section;
+		}
+
+		mobileNav?.querySelectorAll('a[href^="#"]').forEach((a) => {
+			a.addEventListener("click", (e) => {
+				const href = a.getAttribute("href");
+				if (!href || href.length < 2) return;
+				const id = href.slice(1);
+				const target = document.getElementById(id);
+				if (!target) return;
+				e.preventDefault();
+				closeMobileNav();
+				const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+				const anchor = resolveScrollAnchor(target);
+				let scrolled = false;
+				const scrollPastClosedHeader = () => {
+					if (scrolled) return;
+					scrolled = true;
+					const headerBar = document.querySelector(".header-inner");
+					const headerH = headerBar?.getBoundingClientRect().height ?? 0;
+					const gap = 6;
+					const y = anchor.getBoundingClientRect().top + window.scrollY - headerH - gap;
+					window.scrollTo({ top: Math.max(0, y), behavior: smooth ? "smooth" : "auto" });
+					history.replaceState(null, "", href);
+				};
+				const onNavTransitionEnd = (ev) => {
+					if (ev.target !== mobileNav || ev.propertyName !== "max-height") return;
+					mobileNav.removeEventListener("transitionend", onNavTransitionEnd);
+					window.clearTimeout(fallbackTimer);
+					requestAnimationFrame(scrollPastClosedHeader);
+				};
+				const fallbackTimer = window.setTimeout(() => {
+					mobileNav?.removeEventListener("transitionend", onNavTransitionEnd);
+					requestAnimationFrame(scrollPastClosedHeader);
+				}, 450);
+				if (mobileNav) mobileNav.addEventListener("transitionend", onNavTransitionEnd);
+				else requestAnimationFrame(scrollPastClosedHeader);
 			});
+		});
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && mobileNav?.classList.contains("mobile-nav--open")) closeMobileNav();
 		});
 
 		const form = document.getElementById("contact-form");
@@ -413,6 +478,16 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
 		border: 0;
+	}
+
+	/* Στοίχιση με sticky header για όλα τα στοιχεία του μενού (#values … #contact) */
+	#values,
+	#services,
+	#notaries,
+	#lawyers,
+	#about,
+	#contact {
+		scroll-margin-top: var(--header-sticky-offset);
 	}
 
 	.site-header {
@@ -505,15 +580,60 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		width: 22px;
 		background: currentColor;
 		border-radius: 1px;
+		transform-origin: center;
+		transition:
+			transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.25s ease;
+	}
+
+	.menu-toggle[aria-expanded="true"] .menu-bar:nth-child(2) {
+		transform: translateY(7px) rotate(45deg);
+	}
+	.menu-toggle[aria-expanded="true"] .menu-bar:nth-child(3) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+	.menu-toggle[aria-expanded="true"] .menu-bar:nth-child(4) {
+		transform: translateY(-7px) rotate(-45deg);
 	}
 
 	.mobile-nav {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		padding: 1rem 1.25rem 1.25rem;
+		overflow: hidden;
 		background: var(--color-navy-mid);
-		border-top: 1px solid rgba(201, 168, 76, 0.15);
+		border-top: 1px solid transparent;
+		max-height: 0;
+		opacity: 0;
+		padding: 0 1.25rem;
+		transform: translateY(-6px);
+		pointer-events: none;
+		visibility: hidden;
+		transition:
+			max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.3s ease,
+			transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+			padding 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.25s ease,
+			visibility 0s linear 0.38s;
+	}
+
+	.mobile-nav.mobile-nav--open {
+		max-height: min(55vh, 22rem);
+		opacity: 1;
+		padding: 1rem 1.25rem 1.25rem;
+		transform: translateY(0);
+		border-top-color: rgba(201, 168, 76, 0.15);
+		pointer-events: auto;
+		visibility: visible;
+		transition:
+			max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.32s ease 0.04s,
+			transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+			padding 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.25s ease,
+			visibility 0s linear 0s;
 	}
 
 	.mobile-nav a {
@@ -521,10 +641,66 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		padding: 0.5rem 0;
 		font-weight: 500;
 		text-decoration: none;
+		opacity: 0;
+		transform: translateX(-10px);
+		transition:
+			opacity 0.28s ease,
+			transform 0.32s cubic-bezier(0.34, 1.1, 0.64, 1),
+			color 0.2s ease;
+	}
+
+	.mobile-nav.mobile-nav--open a {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.mobile-nav.mobile-nav--open a:nth-child(1) {
+		transition-delay: 0.06s;
+	}
+	.mobile-nav.mobile-nav--open a:nth-child(2) {
+		transition-delay: 0.1s;
+	}
+	.mobile-nav.mobile-nav--open a:nth-child(3) {
+		transition-delay: 0.14s;
+	}
+	.mobile-nav.mobile-nav--open a:nth-child(4) {
+		transition-delay: 0.18s;
+	}
+	.mobile-nav.mobile-nav--open a:nth-child(5) {
+		transition-delay: 0.22s;
+	}
+	.mobile-nav.mobile-nav--open a:nth-child(6) {
+		transition-delay: 0.26s;
 	}
 
 	.mobile-nav a:hover {
 		color: var(--color-gold-light);
+	}
+
+	.mobile-nav-backdrop {
+		display: none;
+		position: fixed;
+		inset: 0;
+		z-index: 99;
+		background: rgba(6, 16, 24, 0.5);
+		backdrop-filter: blur(3px);
+		-webkit-backdrop-filter: blur(3px);
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			opacity 0.3s ease,
+			visibility 0s linear 0.3s;
+	}
+
+	.mobile-nav-backdrop.mobile-nav-backdrop--open {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition:
+			opacity 0.3s ease,
+			visibility 0s linear 0s;
 	}
 
 	@media (min-width: 900px) {
@@ -536,6 +712,16 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		}
 		.mobile-nav {
 			display: none !important;
+		}
+		.mobile-nav-backdrop {
+			display: none !important;
+			pointer-events: none !important;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.mobile-nav-backdrop {
+			transition: none;
 		}
 	}
 
@@ -672,17 +858,33 @@ const mailtoFallback = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "notaries.assists
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
-		flex-wrap: wrap;
+		gap: 0.75rem;
+		flex-wrap: nowrap;
+		width: 100%;
+		max-width: 100%;
 	}
 
 	.gold-lines::before,
 	.gold-lines::after {
 		content: "";
+		flex: 1 1 0;
+		min-width: 0.75rem;
+		max-width: 120px;
 		height: 1px;
-		width: min(120px, 18vw);
 		background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
 		opacity: 0.9;
+	}
+
+	/* Too little room: drop ornaments so the title stays balanced */
+	@media (max-width: 360px) {
+		.gold-lines {
+			gap: 0;
+		}
+
+		.gold-lines::before,
+		.gold-lines::after {
+			display: none;
+		}
 	}
 
 	.section-lead {
